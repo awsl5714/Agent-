@@ -1,0 +1,46 @@
+cat << 'EOF' > test.log
+2026-06-20 19:15:01 [INFO] [main] org.example.app.Application - Starting UserServiceApplication v2.4.1 on ip-10-0-1-52 with PID 28415
+2026-06-20 19:15:03 [INFO] [main] o.s.b.w.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-06-20 19:15:05 [INFO] [main] org.example.app.config.RedisConfig - Successfully connected to Redis cluster at 127.0.0.1:6379
+2026-06-20 19:15:06 [INFO] [main] org.example.app.Application - Started UserServiceApplication in 5.23 seconds (JVM running for 6.1)
+2026-06-20 19:15:10 [INFO] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-20 19:15:10 [INFO] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-20 19:15:11 [INFO] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 12 ms
+2026-06-20 19:15:15 [INFO] [nio-8080-exec-2] o.e.a.controller.UserController - GET /api/v1/users/10086 - IP: 192.168.1.105
+2026-06-20 19:15:15 [DEBUG] [nio-8080-exec-2] o.e.a.service.impl.UserServiceImpl - Fetching user cache for ID: 10086
+2026-06-20 19:15:15 [INFO] [nio-8080-exec-2] o.e.a.service.impl.UserServiceImpl - Cache HIT for user: 10086
+2026-06-20 19:15:18 [INFO] [nio-8080-exec-3] o.e.a.controller.UserController - POST /api/v1/auth/login - User: admin_test
+2026-06-20 19:15:19 [WARN] [nio-8080-exec-3] o.e.a.security.JwtTokenProvider - Login attempt failed: Invalid password for user admin_test
+2026-06-20 19:15:22 [INFO] [nio-8080-exec-4] o.e.a.controller.UserController - GET /api/v1/users/10087 - IP: 114.242.23.11
+2026-06-20 19:15:22 [DEBUG] [nio-8080-exec-4] o.e.a.service.impl.UserServiceImpl - Fetching user cache for ID: 10087
+2026-06-20 19:15:22 [WARN] [nio-8080-exec-4] o.e.a.service.impl.UserServiceImpl - Cache MISS for user: 10087. Querying MySQL database...
+2026-06-20 19:15:22 [DEBUG] [nio-8080-exec-4] o.e.a.mapper.UserMapper.selectById - ==> Preparing: SELECT * FROM t_user WHERE id = ? 
+2026-06-20 19:15:22 [DEBUG] [nio-8080-exec-4] o.e.a.mapper.UserMapper.selectById - ==> Parameters: 10087(Long)
+2026-06-20 19:15:22 [DEBUG] [nio-8080-exec-4] o.e.a.mapper.UserMapper.selectById - <==      Total: 1
+2026-06-20 19:15:25 [INFO] [nio-8080-exec-5] o.e.a.controller.OrderController - POST /api/v1/orders/create - UserID: 10087, ItemID: 5542
+2026-06-20 19:15:26 [INFO] [nio-8080-exec-5] o.e.a.service.impl.OrderServiceImpl - Creating order ox_9928130481
+2026-06-20 19:15:26 [INFO] [kafka-producer-thread] o.a.kafka.clients.producer.KafkaProducer - [Producer clientId=user-service] Alerts sent to topic 'order-events' successfully
+2026-06-20 19:15:30 [INFO] [nio-8080-exec-6] o.e.a.controller.UserController - GET /api/v1/users/10088 - IP: 223.73.91.45
+2026-06-20 19:15:30 [WARN] [nio-8080-exec-6] o.e.a.service.impl.UserServiceImpl - Cache MISS for user: 10088. Querying MySQL database...
+2026-06-20 19:15:33 [ERROR] [nio-8080-exec-6] o.e.a.handler.GlobalExceptionHandler - DB Connection Timeout while fetching user 10088
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:530)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at org.example.app.service.impl.UserServiceImpl.getUserById(UserServiceImpl.java:84)
+2026-06-20 19:15:35 [WARN] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Connection is dead, closing it
+2026-06-20 19:15:36 [INFO] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6bcf45
+2026-06-20 19:15:40 [INFO] [nio-8080-exec-7] o.e.a.controller.UserController - GET /api/v1/users/10087 - IP: 114.242.23.11
+2026-06-20 19:15:40 [INFO] [nio-8080-exec-7] o.e.a.service.impl.UserServiceImpl - Cache HIT for user: 10087
+2026-06-20 19:15:45 [INFO] [scheduled-task-1] o.e.a.task.ClearExpiredTokensTask - Scheduled cron job started: Clearing expired verification tokens
+2026-06-20 19:15:46 [INFO] [scheduled-task-1] o.e.a.task.ClearExpiredTokensTask - Scan complete. Removed 0 expired tokens from database.
+2026-06-20 19:15:52 [INFO] [nio-8080-exec-8] o.e.a.controller.UserController - GET /api/v1/metrics - IP: 127.0.0.1 (Prometheus Scraper)
+2026-06-20 19:15:55 [INFO] [nio-8080-exec-9] o.e.a.controller.UserController - GET /api/v1/users/10089 - IP: 182.149.32.88
+2026-06-20 19:15:55 [WARN] [nio-8080-exec-9] o.e.a.service.impl.UserServiceImpl - Cache MISS for user: 10089. Querying MySQL database...
+2026-06-20 19:15:55 [INFO] [nio-8080-exec-9] o.e.a.service.impl.UserServiceImpl - User 10089 loaded from DB and written to Redis cache.
+2026-06-20 19:16:01 [INFO] [nio-8080-exec-10] o.e.a.controller.OrderController - GET /api/v1/orders/ox_9928130481 - UserID: 10087
+2026-06-20 19:16:05 [WARN] [nio-8080-exec-1] o.e.a.config.FilterConfig - Request processing time slow: GET /api/v1/metrics took 3120ms
+2026-06-20 19:16:10 [INFO] [nio-8080-exec-2] o.e.a.controller.UserController - DELETE /api/v1/users/logout - Token: eyJhbGciOiJIUzI1NiJ9...
+2026-06-20 19:16:10 [INFO] [nio-8080-exec-2] o.e.a.service.impl.UserServiceImpl - User token revoked successfully.
+2026-06-20 19:16:15 [INFO] [scheduled-task-2] o.e.a.task.SystemCheckTask - Health Check: CPU Usage 12.4%, Memory Usage 64.2%, Disk I/O Normal.
