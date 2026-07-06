@@ -146,3 +146,5 @@
    >git remote remove [别名]：删除关联的远程仓库
 
 2. git push
+
+>git push -u origin main
