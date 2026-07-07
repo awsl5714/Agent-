@@ -123,6 +123,8 @@
 
 4.git revert：做相反的操作，抵消
 
+>git revert HEAD -no-edit
+
 5.git reflog：调引用日志
 
 执行git reset --hard [哈希值]就可以恢复被误删的代码
